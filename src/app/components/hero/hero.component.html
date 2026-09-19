@@ -1,0 +1,100 @@
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-intro-badge">
+        <span class="status-dot-active"></span>
+        <span>Available for Enterprise &bull; Cloud Roles</span>
+      </div>
+      <h1 class="hero-name">Abdelrahman Khalaf</h1>
+      <div class="hero-title-sub">Full-Stack .NET Developer &amp; Enterprise Systems Engineer</div>
+      <p class="lead">Designing and deploying scalable, reliable enterprise systems &mdash; ERP backbones, warehouse logistics platforms, IT operations systems, and cloud infrastructure on AWS &mdash; backed by clean architecture and applied Data Science.</p>
+      
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">
+          <span>View Production Systems</span>
+          <lucide-icon [img]="icons.ArrowRight" [size]="16" [strokeWidth]="2.2"></lucide-icon>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <div class="val">{{ systemsCount() }}</div>
+          <div class="lbl">Enterprise Systems Shipped</div>
+        </div>
+        <div class="metric-item">
+          <div class="val">{{ techCount() }}</div>
+          <div class="lbl">Technologies &amp; Frameworks</div>
+        </div>
+        <div class="metric-item">
+          <div class="val">AWS &amp; SQL</div>
+          <div class="lbl">Primary Cloud &amp; DB Stack</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Live Coding Editor Stage -->
+    <div class="hero-stage">
+      <div class="arch-window" id="heroCard">
+        <!-- VS Code Title Bar -->
+        <div class="vsc-titlebar">
+          <div class="vsc-dots">
+            <span class="vsc-dot red"></span>
+            <span class="vsc-dot yellow"></span>
+            <span class="vsc-dot green"></span>
+          </div>
+          <div class="vsc-title" id="vscTitle">
+            {{ activeTab() === 'dev' ? 'DeveloperProfile.cs — Enterprise.Core' : 'Program.cs — Enterprise Runtime' }}
+          </div>
+          <div class="vsc-badge">.NET 10 &middot; C#</div>
+        </div>
+
+        <!-- File Tabs -->
+        <div class="vsc-tabs">
+          <div class="vsc-tab" [class.active]="activeTab() === 'dev'" (click)="onTabClick('dev')">
+            <span class="vsc-tab-icon"></span>
+            DeveloperProfile.cs
+          </div>
+          <div class="vsc-tab" [class.active]="activeTab() === 'prog'" (click)="onTabClick('prog')">
+            <span class="vsc-tab-icon" style="background:#58a6ff;"></span>
+            Program.cs
+          </div>
+        </div>
+
+        <!-- Editor: gutter + code area -->
+        <div class="vsc-editor" #editorContainer id="vscEditorContainer">
+          <div class="vsc-gutter" #codeGutter id="codeGutter"></div>
+          <div class="vsc-code-area" #codeArea id="codeArea"></div>
+        </div>
+
+        <!-- Problems / Terminal Panel -->
+        <div class="vsc-panel">
+          <div class="vsc-panel-tabs">
+            <div class="vsc-ptab" [class.active]="activePanel() === 'problems'" (click)="onPanelClick('problems')">
+              PROBLEMS <span class="vsc-err-count" style="display:none;">1</span>
+            </div>
+            <div class="vsc-ptab" [class.active]="activePanel() === 'terminal'" (click)="onPanelClick('terminal')">
+              TERMINAL
+            </div>
+          </div>
+          <div class="vsc-panel-body" #probBody id="probBody">
+            <span style="color:#484f58;font-size:.67rem;">No problems detected. Solution 0 errors.</span>
+          </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="vsc-statusbar">
+          <div class="st-left">
+            <span class="st-ok">{{ buildStatus() }}</span>
+            <span class="st-branch">{{ statusBranch() }}</span>
+          </div>
+          <div class="st-right">
+            <span>{{ lnCol() }}</span>
+            <span>UTF-8</span>
+            <span>C#</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

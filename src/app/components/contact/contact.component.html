@@ -1,0 +1,59 @@
+<section id="contact">
+  <div class="wrap contact-inner">
+    <div class="eyebrow-sm">Get In Touch</div>
+    <h2>Let's build reliable, scalable systems together.</h2>
+    <p>Available for full-stack .NET engineering roles, cloud infrastructure projects on AWS, and enterprise application development. Reach out directly:</p>
+
+    <div class="contact-methods">
+      <div class="cmethod" (click)="copyEmail()" style="cursor:pointer;">
+        <div class="c-icon">
+          <lucide-icon [img]="icons.Mail" [size]="18" [strokeWidth]="2"></lucide-icon>
+        </div>
+        <div class="c-text">
+          <span class="label">Direct Email</span>
+          <span class="val">abdokhalaf334@gmail.com</span>
+        </div>
+        <span class="go">copy &rarr;</span>
+        <span class="copy-note" [class.show]="emailCopied()">copied!</span>
+      </div>
+
+      <a class="cmethod" href="https://github.com/Abdelrahman2264" target="_blank" rel="noopener">
+        <div class="c-icon">
+          <lucide-icon [img]="icons.Github" [size]="18" [strokeWidth]="2"></lucide-icon>
+        </div>
+        <div class="c-text">
+          <span class="label">GitHub</span>
+          <span class="val">github.com/Abdelrahman2264</span>
+        </div>
+        <span class="go">&rarr;</span>
+      </a>
+
+      <a class="cmethod" href="https://www.linkedin.com/in/abd-el-rahman-khalaf-81063a30b/" target="_blank" rel="noopener">
+        <div class="c-icon">
+          <lucide-icon [img]="icons.Linkedin" [size]="18" [strokeWidth]="2"></lucide-icon>
+        </div>
+        <div class="c-text">
+          <span class="label">LinkedIn</span>
+          <span class="val">abd-el-rahman-khalaf</span>
+        </div>
+        <span class="go">&rarr;</span>
+      </a>
+
+      <a class="cmethod" href="https://wa.me/201155523096" target="_blank" rel="noopener">
+        <div class="c-icon">
+          <lucide-icon [img]="icons.MessageSquare" [size]="18" [strokeWidth]="2"></lucide-icon>
+        </div>
+        <div class="c-text">
+          <span class="label">WhatsApp (Primary)</span>
+          <span class="val">+20 115 552 3096</span>
+        </div>
+        <span class="go">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="status-line">
+      <span class="status-live-dot"></span>
+      <span>Current status: Available &bull; Open to Full-Stack &amp; Enterprise roles</span>
+    </div>
+  </div>
+</section>

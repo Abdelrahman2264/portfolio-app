@@ -1,0 +1,139 @@
+<section id="skills" class="skills-section">
+  <div class="wrap">
+    
+    <!-- Section Header -->
+    <div class="section-head">
+      <div class="eyebrow-sm">Technical Capabilities</div>
+      <h2>Enterprise Systems &amp; Cloud Infrastructure</h2>
+      <p>Production-hardened backend engines, AWS cloud infrastructure, distributed data layers, and applied intelligence.</p>
+    </div>
+
+    <!-- Domain Filter Toolbar -->
+    <div class="skills-nav-wrap">
+      <div class="skills-nav-tabs" role="tablist">
+        @for (tab of filterOptions(); track tab.id) {
+          <button 
+            type="button"
+            class="s-tab-btn"
+            [class.active]="activeFilter() === tab.id"
+            (click)="setFilter(tab.id)"
+            [attr.aria-selected]="activeFilter() === tab.id"
+            role="tab">
+            <span class="tab-icon">{{ tab.icon }}</span>
+            <span>{{ tab.label }}</span>
+          </button>
+        }
+      </div>
+
+      <div class="skills-count mono">
+        showing <span class="count-highlight">{{ activeModulesCount() }}</span> / {{ modules().length }} modules &bull; {{ totalTechCount() }} technologies
+      </div>
+    </div>
+
+    <!-- Bento Modular Deck -->
+    <div class="skills-deck">
+      @for (mod of filteredModules(); track mod.id) {
+        <div class="cap-card glass-card" [attr.data-cat]="mod.category">
+          
+          <!-- Card Top Status Bar -->
+          <div class="cap-card-top">
+            <span class="cap-mod-id">{{ mod.modCode }}</span>
+            <span class="cap-live-status">
+              <span 
+                class="cap-live-dot" 
+                [style.background-color]="mod.statusColor || 'var(--accent-emerald)'"
+                [style.box-shadow]="'0 0 8px ' + (mod.statusColor || 'var(--accent-emerald)')">
+              </span>
+              <span>{{ mod.statusText }}</span>
+            </span>
+          </div>
+
+          <!-- Card Header -->
+          <div class="cap-head">
+            <div class="cap-icon-box" [innerHTML]="mod.headerSvgIcon | safeHtml"></div>
+            <div class="cap-head-text">
+              <h3>{{ mod.title }}</h3>
+              <p>{{ mod.subtitle }}</p>
+            </div>
+          </div>
+
+          <!-- Spec Rows List (Badge-Free, Engineering Precision) -->
+          <div class="cap-list">
+            @for (skill of mod.skills; track skill.id) {
+              <div 
+                class="cap-row"
+                [class.active-spec]="selectedSkill().id === skill.id"
+                (mouseenter)="onSkillHover(skill)"
+                (focus)="onSkillHover(skill)"
+                (click)="selectSkill(skill)"
+                tabindex="0"
+                [attr.aria-label]="skill.name + ': ' + skill.scope">
+                
+                <!-- Glyph Icon -->
+                <div class="cap-row-glyph" [innerHTML]="skill.svgIcon | safeHtml"></div>
+
+                <!-- Info Column -->
+                <div class="cap-row-info">
+                  <div class="cap-row-title">{{ skill.name }}</div>
+                  <div class="cap-row-sub mono">{{ skill.sub }}</div>
+                </div>
+
+                <!-- Telemetry Signal Meter -->
+                <div class="cap-meter" [title]="'Proficiency: ' + skill.level + '/5'">
+                  @for (bar of meterLevels; track bar) {
+                    <span class="m-bar" [class.lit]="skill.level >= bar"></span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+        </div>
+      }
+    </div>
+
+    <!-- Live Stack Telemetry Console Strip (Badge-Free Executive HUD) -->
+    <div class="stack-telemetry">
+      <div class="st-bar-header">
+        <div class="st-bar-title">
+          <lucide-icon [img]="icons.Activity" [size]="15" [strokeWidth]="2"></lucide-icon>
+          <span>SYSTEM ARCHITECTURE TELEMETRY</span>
+        </div>
+        <div class="st-bar-hint mono">
+          Telemetry locked: {{ selectedSkill().name }}
+        </div>
+      </div>
+
+      <div class="st-bar-content">
+        <!-- Selected Component -->
+        <div class="st-metric">
+          <span class="st-metric-label">Selected Component</span>
+          <span class="st-metric-val">{{ selectedSkill().name }}</span>
+        </div>
+
+        <!-- Architecture Tier & Scope -->
+        <div class="st-metric">
+          <span class="st-metric-label">Architecture Tier &amp; Scope</span>
+          <span class="st-metric-val mono">{{ selectedSkill().tier }} &bull; {{ selectedSkill().scope }}</span>
+        </div>
+
+        <!-- Production Deployments -->
+        <div class="st-metric">
+          <span class="st-metric-label">Production Deployments</span>
+          <div class="st-projects">
+            @for (proj of selectedSkill().projects; track proj) {
+              <span class="tag-pill">{{ proj }}</span>
+            }
+          </div>
+        </div>
+
+        <!-- Engineering Depth -->
+        <div class="st-metric">
+          <span class="st-metric-label">Engineering Depth</span>
+          <span class="st-metric-val mono text-depth">{{ selectedSkill().levelText }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

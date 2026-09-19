@@ -1,0 +1,45 @@
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-sm">Experience &amp; Education</div>
+      <h2>Engineering track record</h2>
+      <p>Enterprise production development, front-end architecture, and computer science degree in parallel.</p>
+    </div>
+    
+    <div class="timeline">
+      @for (item of items(); track item.id; let i = $index) {
+        <div class="t-item">
+          <div class="t-node">
+            @if (i === 0) {
+              <lucide-icon [img]="icons.Briefcase" [size]="16" [strokeWidth]="2"></lucide-icon>
+            } @else if (i === 1) {
+              <lucide-icon [img]="icons.Terminal" [size]="16" [strokeWidth]="2"></lucide-icon>
+            } @else if (i === 2) {
+              <lucide-icon [img]="icons.Code" [size]="16" [strokeWidth]="2"></lucide-icon>
+            } @else {
+              <lucide-icon [img]="icons.GraduationCap" [size]="16" [strokeWidth]="2"></lucide-icon>
+            }
+          </div>
+          <div class="t-card glass-card">
+            <div class="t-head">
+              <div>
+                <div class="t-role">{{ item.role }}</div>
+                <div class="t-org">{{ item.organization }}</div>
+              </div>
+              <span class="t-period">{{ item.period }}</span>
+            </div>
+            <div class="t-badges">
+              @if (item.highlightBadge) {
+                <span class="t-badge highlight">{{ item.highlightBadge }}</span>
+              }
+              @for (b of item.badges; track b) {
+                <span class="t-badge">{{ b }}</span>
+              }
+            </div>
+            <p class="t-desc">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

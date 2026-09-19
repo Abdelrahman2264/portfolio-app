@@ -1,0 +1,36 @@
+/* ---------- Experience Timeline ---------- */
+.timeline { position: relative; max-width: 850px; margin: 0 auto; }
+.timeline::before {
+  content: ''; position: absolute; left: 24px; top: 14px; bottom: 14px; width: 2px;
+  background: var(--border-strong);
+}
+.t-item { position: relative; padding: 0 0 42px 68px; }
+.t-item:last-child { padding-bottom: 0; }
+@media(max-width: 640px) { .t-item { padding-left: 50px; } .timeline::before { left: 16px; } }
+
+.t-node {
+  position: absolute; left: 8px; top: 4px; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--bg-surface-elevated); border: 2px solid var(--accent-blue);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-blue); z-index: 2;
+}
+.t-node ::ng-deep svg { width: 16px; height: 16px; }
+@media(max-width: 640px) { .t-node { left: 0px; } }
+
+.t-card { padding: 24px 26px; }
+.t-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+.t-role { font-weight: 700; font-size: 1.12rem; color: var(--text-primary); }
+.t-org { color: var(--accent-blue); font-size: 0.94rem; font-weight: 600; margin-top: 2px; }
+.t-period {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: var(--text-muted);
+  background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle);
+  padding: 3px 10px; border-radius: 6px; white-space: nowrap;
+}
+.t-badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 6px; }
+.t-badge {
+  font-size: 0.74rem; font-family: 'JetBrains Mono', monospace; color: var(--text-secondary);
+  border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: 6px;
+  background: var(--bg-surface-elevated);
+}
+.t-badge.highlight { color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.35); }
+.t-desc { color: var(--text-secondary); font-size: 0.95rem; margin-top: 8px; line-height: 1.7; }

@@ -1,0 +1,49 @@
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  transition: background-color .2s ease, border-color .2s ease;
+  border-bottom: 1px solid transparent;
+}
+header.scrolled {
+  background: color-mix(in srgb, var(--bg-base) 88%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.logo {
+  font-weight: 700; font-size: 1.05rem; display: flex; align-items: center; gap: 10px;
+  color: var(--text-primary); text-decoration: none;
+}
+.logo-mark {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: var(--accent-blue); display: flex; align-items: center; justify-content: center;
+  color: #FFFFFF; font-size: 0.82rem; font-weight: 700;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a:not(.nav-cta) {
+  font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+  transition: color .15s ease; padding: 4px 0; text-decoration: none;
+}
+.nav-links a:not(.nav-cta):hover, .nav-links a:not(.nav-cta).active { color: var(--text-primary); }
+.nav-cta {
+  background: var(--accent-blue); color: #FFFFFF !important;
+  padding: 8px 18px; border-radius: 8px; font-size: 0.88rem; font-weight: 600;
+  transition: background-color .15s ease, transform .15s ease; text-decoration: none;
+}
+.nav-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
+
+.burger {
+  display: none; background: var(--bg-surface); border: 1px solid var(--border-subtle);
+  color: var(--text-primary); padding: 8px 12px; border-radius: 8px; cursor: pointer;
+  font-weight: 600; font-size: 0.86rem; align-items: center; justify-content: center;
+}
+@media(max-width: 860px) {
+  .nav-links {
+    position: fixed; top: 72px; left: 0; right: 0;
+    background: var(--bg-surface-elevated); border-bottom: 1px solid var(--border-subtle);
+    flex-direction: column; align-items: flex-start; padding: 20px 24px; gap: 16px;
+    transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .burger { display: inline-flex; }
+}

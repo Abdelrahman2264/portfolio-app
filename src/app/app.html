@@ -1,0 +1,43 @@
+<!-- Global Background Grid Pattern -->
+<div class="grid-pattern" aria-hidden="true"></div>
+
+<!-- Executive Header Navigation -->
+<app-navbar></app-navbar>
+
+<!-- Main Page Sections -->
+<main id="main-content">
+  <app-hero></app-hero>
+  <app-about></app-about>
+  <app-experience></app-experience>
+  <app-skills-console></app-skills-console>
+  <app-projects></app-projects>
+  <app-contact></app-contact>
+</main>
+
+<!-- Executive Footer -->
+<app-footer></app-footer>
+
+<!-- Global Image Inspection Lightbox -->
+<app-lightbox></app-lightbox>
+
+<!-- Floating Utility Controls matching portfolio_v7.html -->
+<button 
+  id="themeToggle" 
+  type="button" 
+  (click)="themeService.toggleTheme()" 
+  [attr.aria-label]="themeService.currentTheme() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'">
+  @if (themeService.currentTheme() === 'dark') {
+    <lucide-icon [img]="icons.Sun" [size]="18" [strokeWidth]="2"></lucide-icon>
+  } @else {
+    <lucide-icon [img]="icons.Moon" [size]="18" [strokeWidth]="2"></lucide-icon>
+  }
+</button>
+
+<button 
+  id="backToTop" 
+  type="button" 
+  [class.show]="showBackToTop()" 
+  (click)="scrollToTop()" 
+  aria-label="Back to top">
+  <lucide-icon [img]="icons.ArrowUp" [size]="18" [strokeWidth]="2.2"></lucide-icon>
+</button>

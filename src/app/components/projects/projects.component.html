@@ -1,0 +1,66 @@
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-sm">Selected Work</div>
+      <h2>Production Systems &amp; Live Architectures</h2>
+      <p>Real-world enterprise systems, logistics platforms, and intelligent pipelines &mdash; with production interface captures and architecture details.</p>
+    </div>
+
+    <div class="proj-toolbar">
+      <div class="proj-filters" id="projFilters" role="tablist">
+        <button class="pf-btn" [class.active]="activeFilter() === 'all'" (click)="setFilter('all')" role="tab">All Systems</button>
+        <button class="pf-btn" [class.active]="activeFilter() === 'enterprise'" (click)="setFilter('enterprise')" role="tab">Global Enterprise</button>
+        <button class="pf-btn" [class.active]="activeFilter() === 'frontend'" (click)="setFilter('frontend')" role="tab">Frontend</button>
+        <button class="pf-btn" [class.active]="activeFilter() === 'data'" (click)="setFilter('data')" role="tab">Data &amp; AI</button>
+      </div>
+      <div class="proj-count mono" id="projCount">showing {{ shownCount() }} / {{ projects().length }}</div>
+    </div>
+
+    <!-- Projects List -->
+    @for (project of filteredProjects(); track project.id) {
+      <div class="project" [class.rev]="project.isReversed" [attr.data-cat]="project.category">
+        <div class="screenshot-frame" (click)="openPreview(project)">
+          <div class="frame-bar">
+            <div class="frame-dots">
+              <span class="w-dot dot-1"></span>
+              <span class="w-dot dot-2"></span>
+              <span class="w-dot dot-3"></span>
+            </div>
+            <span class="frame-url">https://{{ project.id }}.internal/live</span>
+            <span class="frame-status">ACTIVE SYSTEM</span>
+          </div>
+          <div class="frame-img-wrap">
+            <img [src]="project.image" [alt]="project.title + ' Screenshot'" class="project-screenshot" loading="lazy">
+            <span class="zoom-hint">
+              <lucide-icon [img]="icons.ZoomIn" [size]="13" [strokeWidth]="2"></lucide-icon>
+              Click to Expand
+            </span>
+          </div>
+        </div>
+        <div class="proj-body">
+          <h3>{{ project.title }} <span class="badge-tag">{{ project.subtitle }}</span></h3>
+          <p>{{ project.description }}</p>
+          <div class="tags">
+            @for (t of project.tags; track t) {
+              <span class="tag">{{ t }}</span>
+            }
+          </div>
+          <div class="proj-links">
+            @if (project.liveUrl) {
+              <a [href]="project.liveUrl" target="_blank" rel="noopener">
+                <span>Watch Live Demo &rarr;</span>
+              </a>
+            }
+            @if (project.githubUrl) {
+              <a [href]="project.githubUrl" target="_blank" rel="noopener">
+                <span>View Repository &rarr;</span>
+              </a>
+            }
+            <button class="btn-preview" (click)="openPreview(project)">View Screen</button>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+</section>

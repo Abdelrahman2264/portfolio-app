@@ -1,0 +1,10 @@
+<div 
+  class="lightbox-modal" 
+  [class.active]="lightboxService.state().isOpen" 
+  (click)="onBackdropClick($event)">
+  <div class="lightbox-content" (click)="onContentClick($event)">
+    <button class="lightbox-close" (click)="lightboxService.close()" aria-label="Close Preview">&times;</button>
+    <img [src]="lightboxService.state().imageSrc" [alt]="lightboxService.state().caption" class="lightbox-img">
+    <div class="lightbox-caption">{{ lightboxService.state().caption }}</div>
+  </div>
+</div>
